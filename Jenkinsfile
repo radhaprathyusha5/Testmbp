@@ -1,19 +1,28 @@
-pipeline {
+pipeline { 
+  
    agent any
+
    stages {
-       stage('Build Code') {
-           steps {
-               sh """
-               echo "Building Artifact"
-               """
-           }
-       }
-      stage('Deploy Code') {
-          steps {
-               sh """
-               echo "Deploying Code"
-               """
-          }
+   
+     stage('Install Dependencies') { 
+        steps { 
+           sh 'npm install' 
+        }
+     }
+     
+     stage('Test') { 
+        steps { 
+           sh 'echo "testing application..."'
+        }
       }
+
+         stage("Deploy application") { 
+         steps { 
+           sh 'echo "deploying application..."'
+         }
+
+     }
+  
+   	}
+
    }
-}
